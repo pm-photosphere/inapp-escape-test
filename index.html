@@ -13,7 +13,6 @@ small{color:#5a6b63;word-break:break-all}
 <div id="status" class="box"></div>
 <div class="box"><b>iPhone</b> กดทีละปุ่ม ถ้าเด้งไป Safari แล้วขึ้นกล่องเขียว "เปิดนอกแอปสำเร็จ" แปลว่าปุ่มนั้นใช้ได้
 <a class="btn" id="i1">1. ลิงก์ x-safari-https</a>
-<button id="i2">2. window.open x-safari-https (Messenger: ค้างเป็นหน้าขาว ไม่ต้องกด)</button>
 <button id="i3">3. location.assign x-safari-https (แบบที่ใช้อยู่ตอนนี้)</button>
 <a class="btn" id="i4">4. ลิงก์ instagram://extbrowser</a>
 <a class="btn" id="i5">5. ลิงก์ googlechromes:// (ต้องมี Chrome)</a>
@@ -42,7 +41,6 @@ document.getElementById("ua").textContent = "UA: " + navigator.userAgent;
 function xs(m){ return "x-safari-" + target(m); }
 function intent(m){ var u = new URL(target(m)); return "intent://" + u.host + u.pathname + u.search + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(u.href) + ";end"; }
 document.getElementById("i1").href = xs(1);
-document.getElementById("i2").onclick = function(){ window.open(xs(2), "_blank"); };
 document.getElementById("i3").onclick = function(){ window.location.assign(xs(3)); };
 document.getElementById("i4").href = "instagram://extbrowser/?url=" + encodeURIComponent(target(4));
 document.getElementById("i5").href = target(5).replace(/^https:/, "googlechromes:");

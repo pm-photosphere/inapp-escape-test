@@ -17,6 +17,10 @@ small{color:#5a6b63;word-break:break-all}
 <button id="i3">3. location.assign x-safari-https (แบบที่ใช้อยู่ตอนนี้)</button>
 <a class="btn" id="i4">4. ลิงก์ instagram://extbrowser</a>
 <a class="btn" id="i5">5. ลิงก์ googlechromes:// (ต้องมี Chrome)</a>
+<a class="btn" id="i9">9. ไปหน้าที่ redirect อัตโนมัติ (meta refresh x-safari)</a>
+<a class="btn" id="i10" target="_blank">10. ลิงก์ x-safari-https แบบแท็บใหม่</a>
+<a class="btn" id="i11">11. ลิงก์ x-safari-http (ไม่มี s)</a>
+<button id="i12">12. iframe x-safari-https</button>
 </div>
 <div class="box"><b>Android</b>
 <a class="btn" id="a1">6. ลิงก์ intent:// ไป Chrome</a>
@@ -30,6 +34,7 @@ small{color:#5a6b63;word-break:break-all}
 var base = location.origin + location.pathname;
 function target(m){ return base + "?escaped=" + m; }
 var q = new URLSearchParams(location.search);
+if (q.get("auto")) { var m=document.createElement("meta"); m.httpEquiv="refresh"; m.content="0;url="+"x-safari-"+base+"?escaped=9"; document.head.appendChild(m); }
 var tg = ("TelegramWebviewProxy" in window) || ("TelegramWebviewProxyProto" in window) || ("TelegramWebview" in window);
 var st = document.getElementById("status");
 st.innerHTML = q.get("escaped") ? '<div class="ok">เปิดนอกแอปสำเร็จ ด้วยปุ่ม ' + q.get("escaped") + '</div>' : 'ตอนนี้อยู่ในหน้าแรก (ยังไม่ได้กดปุ่ม)';
@@ -42,6 +47,10 @@ document.getElementById("i2").onclick = function(){ window.open(xs(2), "_blank")
 document.getElementById("i3").onclick = function(){ window.location.assign(xs(3)); };
 document.getElementById("i4").href = "instagram://extbrowser/?url=" + encodeURIComponent(target(4));
 document.getElementById("i5").href = target(5).replace(/^https:/, "googlechromes:");
+document.getElementById("i9").href = base + "?auto=1";
+document.getElementById("i10").href = xs(10);
+document.getElementById("i11").href = "x-safari-" + target(11).replace(/^https:/, "http:");
+document.getElementById("i12").onclick = function(){ var f=document.createElement("iframe"); f.style.display="none"; f.src=xs(12); document.body.appendChild(f); };
 document.getElementById("a1").href = intent(6);
 document.getElementById("a2").onclick = function(){ window.location.assign(intent(7)); };
 document.getElementById("l1").href = target(8) + "&openExternalBrowser=1";

@@ -20,6 +20,10 @@ small{color:#5a6b63;word-break:break-all}
 <a class="btn" id="i10" target="_blank">10. ลิงก์ x-safari-https แบบแท็บใหม่</a>
 <a class="btn" id="i11">11. ลิงก์ x-safari-http (ไม่มี s)</a>
 <button id="i12">12. iframe x-safari-https</button>
+<a class="btn" id="i13">13. ลิงก์ com-apple-mobilesafari-tab:</a>
+<a class="btn" id="i14">14. ลิงก์ x-web-search:// (ค้นหาใน Safari)</a>
+<a class="btn" id="i15">15. ลิงก์ googlechrome:// (ต้องมี Chrome)</a>
+<a class="btn" id="i16" download="t.txt" href="data:text/plain,uu">16. ดาวน์โหลดไฟล์</a>
 </div>
 <div class="box"><b>Android</b>
 <a class="btn" id="a1">6. ลิงก์ intent:// ไป Chrome</a>
@@ -48,6 +52,9 @@ document.getElementById("i9").href = base.replace(/index\.html$/,"") + "auto.htm
 document.getElementById("i10").href = xs(10);
 document.getElementById("i11").href = "x-safari-" + target(11).replace(/^https:/, "http:");
 document.getElementById("i12").onclick = function(){ var f=document.createElement("iframe"); f.style.display="none"; f.src=xs(12); document.body.appendChild(f); };
+document.getElementById("i13").href = "com-apple-mobilesafari-tab:" + target(13);
+document.getElementById("i14").href = "x-web-search://?" + encodeURIComponent(target(14));
+document.getElementById("i15").href = target(15).replace(/^https:/, "googlechrome:");
 document.getElementById("a1").href = intent(6);
 document.getElementById("a2").onclick = function(){ window.location.assign(intent(7)); };
 document.getElementById("l1").href = target(8) + "&openExternalBrowser=1";
